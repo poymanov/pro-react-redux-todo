@@ -1,0 +1,21 @@
+version: "3.7"
+services:
+    frontend:
+        build:
+            context: docker/nginx
+        ports:
+            - "8080:80"
+        depends_on:
+            - frontend-node
+    frontend-node:
+        build:
+            context: docker/node
+        volumes:
+            - ./app:/app
+        command: sh -c "until [ -f .ready ] ; do sleep 1 ; done && yarn start"
+        tty: true
+    frontend-node-cli:
+        build:
+            context: docker/node
+        volumes:
+            - ./app:/app
