@@ -5,7 +5,7 @@ import './todo-list-item.css';
 export default class TodoListItem extends Component {
     render() {
         const {
-            label, onDeleted,
+            label, onDelete,
             onToggleImportant, onToggleDone,
             done, important
         } = this.props;
@@ -38,7 +38,7 @@ export default class TodoListItem extends Component {
 
               <button type="button"
                       className="btn btn-outline-danger btn-sm float-right"
-                      onClick={onDeleted} >
+                      onClick={onDelete} >
                 <i className="fa fa-trash-o"/>
               </button>
             </span>
